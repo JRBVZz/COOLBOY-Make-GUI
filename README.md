@@ -1,0 +1,2 @@
+# COOLBOY-Make-GUI
+GUI for COOLBOY/COOLGIRL Multirom Builder
