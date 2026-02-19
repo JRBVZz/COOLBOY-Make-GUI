@@ -1,0 +1,119 @@
+﻿<Window x:Class="MakefileRunner.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Coolboy Makefile GUI" Height="450" Width="600">
+    <Grid>
+        <TabControl>
+            <!-- Вкладка Makefile Runner -->
+            <TabItem Header="Main">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <!-- Makefile -->
+                        <RowDefinition Height="35"/>
+                        <!-- Target -->
+                        <RowDefinition Height="35"/>
+                        <!-- Options -->
+                        <RowDefinition Height="*"/>
+                        <!-- Log -->
+                        <RowDefinition Height="35"/>
+                        <!-- Run -->
+                    </Grid.RowDefinitions>
+
+                    <!-- Makefile -->
+                    <DockPanel Grid.Row="0" Margin="0,0,0,10" LastChildFill="True">
+                        <Button Padding="5,0" Content="Выбрать Makefile" Click="ChooseMakefile_Click" Margin="0,0,10,0"/>
+                        <TextBox x:Name="MakefilePathBox" HorizontalAlignment="Stretch" IsReadOnly="False" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+                    </DockPanel>
+
+                    <!-- Target -->
+                    <DockPanel Grid.Row="1" Margin="0,0,0,10" LastChildFill="True">
+                        <TextBlock Text="Команда:" VerticalAlignment="Center" Margin="0,0,5,0" Height="16"/>
+                        <ComboBox x:Name="TargetComboBox" Width="60" Margin="0,0,10,0" VerticalContentAlignment="Center"/>
+                        <Button Padding="5,0" Content="Games List" Click="ChooseGameList_Click" Margin="0,0,10,0"/>
+                        <TextBox x:Name="GameListPathBox" HorizontalAlignment="Stretch" IsReadOnly="False" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+                    </DockPanel>
+
+                    <!-- Options -->
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,0,0,10">
+                        <!-- Submapper -->
+                        <CheckBox x:Name="EnableSubmapperCheckBox" Content="Submapper:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Checked="EnableSubmapperCheckBox_Checked" Unchecked="EnableSubmapperCheckBox_Unchecked" Height="16" VerticalContentAlignment="Center"/>
+                        <ComboBox x:Name="SubmapperComboBox" Grid.Row="2" Grid.Column="1" Margin="5,0,12,0" IsEnabled="False" Width="36" Height="22">
+                            <ComboBox.ItemsSource>
+                                <x:Array Type="sys:Int32" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                                    <sys:Int32>0</sys:Int32>
+                                    <sys:Int32>1</sys:Int32>
+                                    <sys:Int32>2</sys:Int32>
+                                    <sys:Int32>3</sys:Int32>
+                                    <sys:Int32>4</sys:Int32>
+                                    <sys:Int32>5</sys:Int32>
+                                </x:Array>
+                            </ComboBox.ItemsSource>
+                        </ComboBox>
+                        <Border BorderThickness="1" BorderBrush="Black" Width="1" Height="15" Margin="0,0,10,0"/>
+                        <CheckBox x:Name="SaveCheckBox" Content="Save" VerticalAlignment="Center" IsChecked="False" Margin="0,0,10,0"/>
+                        <Border BorderThickness="1" BorderBrush="Black" Width="1" Height="15" Margin="0,0,10,0"/>
+                        <CheckBox x:Name="SoundCheckBox" Content="Sound" VerticalAlignment="Center" IsChecked="True" Margin="0,0,10,0"/>
+                        <Border BorderThickness="1" BorderBrush="Black" Width="1" Height="15" Margin="0,0,10,0"/>
+                        <CheckBox x:Name="RCursorBox" Content="R.Cursor" VerticalAlignment="Center" IsChecked="True" Margin="0,0,10,0"/>
+                        <Border BorderThickness="1" BorderBrush="Black" Width="1" Height="15" Margin="0,0,10,0"/>
+                        <TextBlock Text="Stars:" VerticalAlignment="Center" Margin="0,0,5,0" Height="16"/>
+                        <TextBox x:Name="StarsBox" Width="24" Text="30" VerticalAlignment="Center" TextAlignment="Center" Height="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- Log -->
+                    <TextBox x:Name="LogBox" Grid.Row="3" VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Auto" IsReadOnly="True" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,10"/>
+                    
+                    <DockPanel Grid.Row="4" Margin="0,0,0,10">
+                        <!-- Extra options -->
+                        <TextBlock Text="Доп. параметры:" VerticalAlignment="Center" Margin="0,0,5,0" Height="16"/>
+                        <TextBox x:Name="ExtraOptionsBox" Width="300" Margin="0,0,0,0" IsReadOnly="False" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+                    
+                        <!-- Run -->
+                        <Button Content="Запустить" Width="100" Click="RunTarget_Click" HorizontalAlignment="Right"/>
+                    </DockPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Help -->
+            <TabItem Header="Options">
+                <Grid Margin="10">
+                <StackPanel>
+                    <TextBlock TextWrapping="Wrap" Margin="5,10,0,0">
+                            Эта утилита запускает команды make из указанного Makefile, используя окружение MSYS2. <LineBreak />
+                            ● Выберите Makefile <LineBreak />
+                            ● Выберите команду:
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">
+                            □ nes20 - сборка файла с расширением .nes<LineBreak />
+                            □ unif - сборка файла с расширением .unif<LineBreak />
+                            □ bin - сборка файла с расширением .bin<LineBreak />
+                            □ all - сборка файлов во всех форматах<LineBreak />
+                            □ clean - удаление всех промежуточных файлов для сборки
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="5,5,0,0">
+                            ● Задайте параметры:
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="20,0,0,0">
+                            □ Submapper - номер субмаппера (только для Coolboy)<LineBreak />
+                            □ Save - добавляет возможность сохранений<LineBreak />
+                            □ Sound - звук в меню<LineBreak />
+                            □ R.Cursor - наличие курсора справа<LineBreak />
+                            □ Stars - количество звезд на фоне меню (целое число от 0 до 62)
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" Margin="5,5,0,0">
+                            ● При необходимости добавьте параметры в поле "Доп. параметры"<LineBreak />
+                            ● Нажмите "Запустить" для выполнения скрипта
+                    </TextBlock>
+                    <TextBlock Text="Путь к bash.exe:" Margin="5,10,0,5"/>
+                    <DockPanel Margin="0,0,0,10" LastChildFill="True">
+                        <Button Content="..." Width="30" Click="BrowseBashPath_Click" Margin="5,0,10,0"/>
+                        <TextBox x:Name="BashPathBox" Margin="0,0,0,0" Text="C:\Program Files\msys64\usr\bin\bash.exe" VerticalContentAlignment="Center" IsReadOnly="False"/>
+                    </DockPanel>
+                </StackPanel>
+            </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
