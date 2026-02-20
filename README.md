@@ -3,7 +3,7 @@
 
 ### Требования
 - Естественно на ПК должен быть [COOLBOY](https://github.com/ClusterM/coolboy-multirom-builder) или [COOLGIRL](https://github.com/ClusterM/coolgirl-multirom-builder) Multirom Builder, в зависимости от того для какого картриджа вы собираете многоигровку.
-- Установить [MSYS2](https://www.msys2.org/docs/installer/)
+- Установить [MSYS2](https://github.com/msys2/msys2-installer)
 - Запустить через меню Пуск -> MSYS2 -> MINGW64. В открывшемся окне выполнить команду: pacman -S make
 - Установить [.NET 9.0 Runtime или SDK](https://dotnet.microsoft.com/ru-ru/download/dotnet/9.0)
 - В программе во вкладке Options указать путь до bash.exe
