@@ -1,0 +1,11 @@
+{
+  "AppSettings": {
+    "SubmapperEnabled": false,
+    "SaveEnabled": true,
+    "SoundEnabled": true,
+    "RCursorEnabled": false,
+    "StarsCount": "0",
+    "GameListPath": "games.list",
+    "BashPath": "C:\\Program Files\\msys64\\usr\\bin\\bash.exe"
+  }
+}

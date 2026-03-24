@@ -1,26 +1,39 @@
-﻿using Microsoft.Win32;
-using System.ComponentModel;
+﻿using CoolboyMakeGUI;
+using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
 
 namespace MakefileRunner
 {
+
+    public class AppSettings
+    {
+        public bool SubmapperEnabled { get; set; }
+        public bool SaveEnabled { get; set; }
+        public bool SoundEnabled { get; set; }
+        public bool RCursorEnabled { get; set; }
+        public string? StarsCount { get; set; }
+        public string? GameListPath { get; set; }
+        public string? BashPath { get; set; }
+    }
+
     public partial class MainWindow : Window
     {
         private readonly List<string> predefinedTargets = new() { "nes20", "unif", "bin", "all", "clean" };
-        
+
         public MainWindow()
         {
             InitializeComponent();
             LoadDefaultTargets();
-            EnableSubmapperCheckBox.IsChecked = true;
+            EnableSubmapperCheckBox.IsChecked = App.Settings.SubmapperEnabled;
             SubmapperComboBox.SelectedIndex = 0;
-            SoundCheckBox.IsChecked = true;
-            RCursorBox.IsChecked = true;
-            StarsBox.Text = "30";
-            GameListPathBox.Text = "games.list";
-            
+            SaveCheckBox.IsChecked = App.Settings.SaveEnabled;
+            SoundCheckBox.IsChecked = App.Settings.SoundEnabled;
+            RCursorBox.IsChecked = App.Settings.RCursorEnabled;
+            StarsBox.Text = App.Settings.StarsCount;
+            GameListPathBox.Text = App.Settings.GameListPath;
+            BashPathBox.Text = App.Settings.BashPath;
         }
 
         private void LoadDefaultTargets()

@@ -109,7 +109,7 @@
                     <TextBlock Text="Путь к bash.exe:" Margin="5,10,0,5"/>
                     <DockPanel Margin="0,0,0,10" LastChildFill="True">
                         <Button Content="..." Width="30" Click="BrowseBashPath_Click" Margin="5,0,10,0"/>
-                        <TextBox x:Name="BashPathBox" Margin="0,0,0,0" Text="C:\Program Files\msys64\usr\bin\bash.exe" VerticalContentAlignment="Center" IsReadOnly="False"/>
+                        <TextBox x:Name="BashPathBox" Margin="0,0,0,0" VerticalContentAlignment="Center" IsReadOnly="False"/>
                     </DockPanel>
                 </StackPanel>
             </Grid>
