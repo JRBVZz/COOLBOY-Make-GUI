@@ -27,3 +27,6 @@
 ● Нажмите "Запустить" для выполнения скрипта  
 
 В папке COOLBOY/COOLGIRL Multirom Builder появится итоговый файл/файлы многоигровки.
+
+### Файл с настройками
+В файле MakeGUIsettings.json хранятся настройки параметров: Submapper, Save, Sound, R.Cursor, Stars, а также путь до bash.exe
